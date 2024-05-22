@@ -8,9 +8,6 @@
 *.so
 *.dylib
 
-# General
-.DS_Store
-
 # Test binary, built with `go test -c`
 *.test
 
@@ -24,4 +21,11 @@
 go.work
 go.work.sum
 
+# Mac OS
+.DS_Store
+
+# IDEA config
 .idea
+
+# Go air build output dir
+tmp/
