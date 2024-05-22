@@ -3,14 +3,17 @@
 # top-most EditorConfig file
 root = true
 
+# For normal files
 [*]
 indent_style = space
+max_line_length = 100
 indent_size = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = false
 
-[Makefile]
+# For go project, makefile, go files
+[{Makefile,*.go}]
 indent_style = tab
 indent_size = 4
