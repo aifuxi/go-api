@@ -1,13 +1,16 @@
 version: "2"
 sql:
-  - schema: "./db/schema.sql"
-    queries: "./db/query.sql"
+  - schema: "./db/migration/"
+    queries: "./db/query/"
     engine: "postgresql"
     gen:
       go:
         package: "sqlc"
         out: "./db/sqlc"
+        emit_db_tags: true
+        emit_prepared_queries: true
+        emit_json_tags: true
+        json_tags_case_style: camel
+        emit_empty_slices: true
     database:
-      uri: postgresql://root:${PG_PASSWORD}@localhost:5432/authors
-    rules:
-      - sqlc/db-prepare
+      uri: postgresql://root:123456@localhost:5432/fuxiaochen_go_api

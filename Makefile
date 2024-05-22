@@ -42,4 +42,7 @@ migratedown:
 migrategen:
 	migrate create -ext sql -dir db/migration -seq ${DB_MIGRATION_NAME}
 
-.PHONY: pg createdb dropdb migrateup migratedown migrategen
+sqlc:
+	sqlc generate
+
+.PHONY: pg createdb dropdb migrateup migratedown migrategen sqlc
