@@ -8,6 +8,11 @@ import (
 	"github.com/aifuxi/go-api/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"time"
+)
+
+const (
+	duration = time.Minute * 2
 )
 
 type createUserRequest struct {
@@ -99,5 +104,11 @@ func (server *Server) login(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{"data": "success"})
+	createToken, err := server.tokenMaker.CreateToken(req.Username, duration)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"data": gin.H{"accessToken": createToken}})
 }
